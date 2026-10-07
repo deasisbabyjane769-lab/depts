@@ -1,22 +1,39 @@
 from abc import ABC, abstractmethod
 
-class PaymentMethod(ABC):
+
+class Employee(ABC):
+
     @abstractmethod
-    def pay(self, amount):
+    def work(self):
         pass
 
-class CreditCard(PaymentMethod):
-    def pay(self, amount):
-        print("Charging", amount, "to credit card")
+    @abstractmethod
+    def get_salary(self):
+        pass
 
-class PayPal(PaymentMethod):
-    def pay(self, amount):
-        print("Sending", amount, "via PayPal")
 
-class GCash(PaymentMethod):
-    def pay(self, amount):
-        print("Sending", amount, "via GCash")
+class Developer(Employee):
 
-methods = [CreditCard(), PayPal(), GCash()]
-for m in methods:
-    m.pay(49.99)
+    def work(self):
+        print("Developer is writing code.")
+
+    def get_salary(self):
+        print("Salary: 30,000")
+
+
+class Teacher(Employee):
+
+    def work(self):
+        print("Teacher is teaching.")
+
+    def get_salary(self):
+        print("Salary: 25,000")
+
+developer = Developer()
+teacher = Teacher()
+
+developer.work()
+developer.get_salary()
+
+teacher.work()
+teacher.get_salary()
